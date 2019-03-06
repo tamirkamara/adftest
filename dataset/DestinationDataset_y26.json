@@ -1,0 +1,19 @@
+{
+	"name": "DestinationDataset_y26",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlobFSFile",
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "arrayOfObjects"
+			},
+			"fileName": "movies.json",
+			"folderPath": "lake/movies"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

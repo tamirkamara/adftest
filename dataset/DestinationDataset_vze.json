@@ -1,0 +1,24 @@
+{
+	"name": "DestinationDataset_vze",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlobFSFile",
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": true
+			},
+			"fileName": "Movies.txt",
+			"folderPath": "lake/movies"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

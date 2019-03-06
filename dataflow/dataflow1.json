@@ -1,0 +1,34 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "rentals_transactions",
+						"type": "DatasetReference"
+					},
+					"name": "source1",
+					"script": "source(output(\n\t\tTransactionID as string,\n\t\tCustomerID as string,\n\t\tMovieID as string,\n\t\tRentalDate as string,\n\t\tReturnDate as string,\n\t\tRentalCost as double,\n\t\tLateFee as double,\n\t\tRewindFlag as string,\n\t\tCreatedDate as string,\n\t\tUpdatedDate as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1",
+					"script": "Aggregate1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1),\n\tpartitionFileNames:['Orders']) ~> sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Aggregate1",
+					"script": "source1 aggregate(groupBy(TransactionID,\n\t\tCustomerID),\n\tNumberOfMovies = count()) ~> Aggregate1"
+				}
+			]
+		}
+	}
+}

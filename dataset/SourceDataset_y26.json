@@ -1,0 +1,14 @@
+{
+	"name": "SourceDataset_y26",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CosmosDb_Movies",
+			"type": "LinkedServiceReference"
+		},
+		"type": "DocumentDbCollection",
+		"typeProperties": {
+			"collectionName": "movies"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

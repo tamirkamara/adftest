@@ -1,0 +1,22 @@
+{
+	"name": "SourceDataset_163",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlD_CloudSales",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_tableName": {
+				"type": "String"
+			}
+		},
+		"type": "AzureSqlTable",
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().cw_tableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
